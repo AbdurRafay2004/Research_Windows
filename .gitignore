@@ -1,0 +1,11 @@
+#add to .gitignore
+
+/data/VG_100K
+/data/VG_100K_2
+/output
+/pretrained_models
+/GRiT
+/checkpoints
+/data/region_descriptions.json
+/data/region_descriptions_test.json
+
