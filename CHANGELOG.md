@@ -23,6 +23,8 @@
 - Cell 26: Fixed `/tmp/` path to use `os.environ['TEMP']` on Windows
 - Metadata: Updated kernel to `densecap-gpu`, removed Kaggle-specific metadata
 
+- replaced `region_id` with `id` at cell 4 and 5 because of keyerror `region_id` at cell 4
+
 ### New Files
 - `requirements.txt` — Pinned dependency list
 - `build_detectron2.bat` — MSVC batch file for building detectron2
