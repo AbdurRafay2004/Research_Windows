@@ -43,3 +43,11 @@
 
 ### New Files
 - `fix_notebook_paths.py` — Script to fix path issues in the notebook
+
+### Missing Class Definitions (via `add_missing_classes.py`)
+- **Cell 12 (New)**: Added missing `CrossAttentionAdapter` class — cross-attention module for injecting visual features into LLM layers
+- **Cell 12 (New)**: Added missing `VisualProjector` class — projects GRiT visual features (768 dim) to LLM space (4096 dim) with spatial compression (196 -> 32 tokens)
+- These classes were referenced in Cell 13 and Cell 15 but were never defined, causing `NameError: name 'VisualProjector' is not defined`
+
+### New Files
+- `add_missing_classes.py` — Script to add missing class definitions to the notebook
