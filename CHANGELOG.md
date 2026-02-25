@@ -31,3 +31,15 @@
 - `modify_notebook.py` — Script that patched the notebook for Windows
 - `README.md` — Project documentation with status and quick start
 - `CHANGELOG.md` — This file
+
+## 2026-02-25
+
+### Path Fixes (via `fix_notebook_paths.py`)
+- **Cell 3**: Fixed `PROJECT_ROOT` detection — replaced `os.path.abspath('__file__')` (string literal bug) with `os.getcwd()` fallback for Jupyter notebooks
+- **Cell 8**: Fixed `MODEL_DIR` to use `os.path.join(PROJECT_ROOT, "pretrained_models")` instead of relative path
+- **Cell 8**: Fixed `checkpoint_path` to use `os.path.join()` instead of f-string with forward slash
+- **Cell 9**: Fixed `GRIT_REPO_PATH` to use `os.path.join(PROJECT_ROOT, 'GRiT')` instead of relative path
+- **Cell 25 (Critical)**: Fixed `temp_path` — `os.path.join()` was incorrectly wrapped in quotes as a string literal instead of executable code
+
+### New Files
+- `fix_notebook_paths.py` — Script to fix path issues in the notebook
