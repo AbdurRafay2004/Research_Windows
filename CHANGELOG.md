@@ -51,3 +51,16 @@
 
 ### New Files
 - `add_missing_classes.py` — Script to add missing class definitions to the notebook
+
+### Hugging Face Cache Configuration
+- **Cell 2**: Added `HF_HOME` and `HUGGINGFACE_HUB_CACHE` environment variables to redirect Hugging Face downloads from C: drive to `Y:\Research_Windows\huggingface_cache`
+- This prevents the C: drive from filling up when downloading large models like GritLM-7B (~14 GB)
+
+### GritLMWithVision Class Fix
+- **Cell 13**: Removed duplicate `GritLMWithVision` class definition (Cell 13 was duplicated)
+- **Cell 13**: Added Windows compatibility check for bitsandbytes — falls back to fp16 if 4-bit quantization fails
+- Fixed `ValueError: '.to' is not supported for '4-bit' or '8-bit' bitsandbytes models` by ensuring model is loaded directly to correct device without `.to()` calls
+
+### New Files
+- `edit_notebook_cache.py` — Script to update Hugging Face cache path in notebook
+- `fix_gritlm_error.py` — Script to fix duplicate GritLMWithVision class and bitsandbytes compatibility
