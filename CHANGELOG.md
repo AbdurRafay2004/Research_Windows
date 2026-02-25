@@ -74,3 +74,12 @@
 
 ### New Files
 - `fix_hf_cache_v2.py` — Script to fix remaining HuggingFace cache leaks to C: drive
+
+### dispatch_model Monkey-Patch Fix (via `fix_cell13_dispatch.py`)
+- **Cell 13**: Added monkey-patch for `dispatch_model` in both `accelerate.big_modeling` and `transformers.modeling_utils` to force `force_hooks=True`
+- **Cell 13**: Added `try/finally` block to ensure original functions are restored after model loading
+- **Cell 13**: Added `max_memory={0: "15GB"}` parameter to prevent OOM on 16GB GPU
+- Root cause: `transformers` 4.40.0+ blocks `.to()` calls on bitsandbytes quantized models, but `accelerate`'s `dispatch_model` still attempts to call it when using `device_map="auto"`. The fix forces hook-based dispatch instead of `.to()` dispatch.
+
+### New Files
+- `fix_cell13_dispatch.py` — Script to add dispatch_model monkey-patch fix to Cell 13
