@@ -2,6 +2,19 @@
 
 Dense Captioning model that fuses **GRiT** (ViT-B visual encoder) with **GritLM-7B** (LLM decoder + cross-attention adapters) for region-level image captioning on Visual Genome.
 
+# Important files to look at
+
+[Notebook](https://github.com/AbdurRafay2004/Research_Windows/blob/main/densecap-grit-gritlm-fusion%20(1).ipynb)
+
+[Changelog](https://github.com/AbdurRafay2004/Research_Windows/blob/main/CHANGELOG.md)
+
+[BestPractices](https://github.com/AbdurRafay2004/Research_Windows/blob/main/BestPractices.md)
+
+[README](https://github.com/AbdurRafay2004/Research_Windows/blob/main/README.md)
+
+[requirements.txt](https://github.com/AbdurRafay2004/Research_Windows/blob/main/requirements.txt)
+
+
 ## Current Status
 
 ✅ **Environment Setup Complete** — Ready to train on local GPU.
