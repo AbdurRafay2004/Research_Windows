@@ -14,6 +14,7 @@ Dense Captioning model that fuses **GRiT** (ViT-B visual encoder) with **GritLM-
 
 [requirements.txt](https://github.com/AbdurRafay2004/Research_Windows/blob/main/requirements.txt)
 
+[Image of the file structure](https://github.com/AbdurRafay2004/Research_Windows/blob/main/file_structure.png)
 
 ## Current Status
 
