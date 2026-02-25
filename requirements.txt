@@ -1,0 +1,22 @@
+# Core ML dependencies (PyTorch installed separately with CUDA 12.8)
+transformers==4.36.0
+timm
+opencv-python
+pycocotools
+lvis
+einops
+accelerate
+bitsandbytes
+scikit-learn
+nltk
+matplotlib
+tqdm
+gdown
+
+# Jupyter
+jupyter
+ipykernel
+
+# Image handling
+Pillow
+numpy

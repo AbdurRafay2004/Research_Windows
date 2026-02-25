@@ -9,3 +9,5 @@
 /data/region_descriptions.json
 /data/region_descriptions_test.json
 
+.venv
+/_detectron2_build
