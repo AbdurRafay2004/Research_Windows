@@ -12,6 +12,7 @@ nltk
 matplotlib
 tqdm
 gdown
+boto3
 
 # Jupyter
 jupyter

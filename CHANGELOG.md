@@ -83,3 +83,20 @@
 
 ### New Files
 - `fix_cell13_dispatch.py` — Script to add dispatch_model monkey-patch fix to Cell 13
+
+### GRiT Model Configuration Fixes (Manual Notebook Edits)
+- **Cell 10**: Added `cfg.MODEL.ROI_HEADS.NAME = "GRiTROIHeadsAndTextDecoder"` — specifies GRiT's custom ROI heads which include `object_feat_pooler` attribute
+- **Cell 10**: Added `cfg.MODEL.ROI_BOX_HEAD.CLS_AGNOSTIC_BBOX_REG = True` — required by CascadeROIHeads (parent class of GRiTROIHeadsAndTextDecoder)
+- **Cell 10**: Added `cfg.MODEL.ROI_BOX_HEAD.NAME = "FastRCNNConvFCHead"` — specifies the box head architecture for feature extraction
+- **Cell 10**: Added `cfg.MODEL.ROI_BOX_HEAD.NUM_FC = 2` — configures 2 FC layers in box head
+- **Cell 10**: Added `cfg.MODEL.ROI_BOX_HEAD.FC_DIM = 1024` — sets FC layer dimension to 1024
+- Root cause: Default detectron2 configuration uses `Res5ROIHeads` which lacks `object_feat_pooler`, and `CascadeROIHeads` requires class-agnostic bbox regression
+
+### GRiTFeatureExtractor Training Mode Fix
+- **Cell 11**: Added `train()` method override to `GRiTFeatureExtractor` class to keep GRiT model frozen in eval mode during training
+- This prevents RPN from requiring `gt_instances` during feature extraction when parent model is in training mode
+- **Cell 18**: Commented out incorrect `model.visual_encoder.predictor.model.eval()` line
+- **Cell 19**: Commented out incorrect `model.visual_encoder.predictor.model.eval()` line in validate function
+
+### Dependency Updates
+- **requirements.txt**: Added `boto3` — required by GRiT for S3/model loading functionality
