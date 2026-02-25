@@ -64,3 +64,13 @@
 ### New Files
 - `edit_notebook_cache.py` — Script to update Hugging Face cache path in notebook
 - `fix_gritlm_error.py` — Script to fix duplicate GritLMWithVision class and bitsandbytes compatibility
+
+### HuggingFace Cache Fix v2 (via `fix_hf_cache_v2.py`)
+- **Cell 2**: Added missing `HF_HUB_CACHE` env var (the current/correct name — old `HUGGINGFACE_HUB_CACHE` is deprecated and ignored by newer `huggingface_hub`)
+- **Cell 2**: Added missing `HF_MODULES_CACHE` env var (controls where `trust_remote_code=True` downloads custom code like `modeling_gritlm7b.py`)
+- **Cell 2**: Set `HF_HUB_CACHE` to `cache_dir/hub` and `HF_MODULES_CACHE` to `cache_dir/modules` to match HuggingFace's expected directory structure
+- **Cell 2**: Added runtime monkey-patch of `huggingface_hub.constants` as a safety net to force paths even if env vars are read before being set
+- Root cause: GritLM-7B model shards (~5 GB) and custom code were still downloading to `C:\Users\abdur\.cache\huggingface` despite `cache_dir` being set
+
+### New Files
+- `fix_hf_cache_v2.py` — Script to fix remaining HuggingFace cache leaks to C: drive
